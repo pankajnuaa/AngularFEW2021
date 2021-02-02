@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AppState } from 'src/app/reducers';
+import *  as action from '../../actions/counter.actions';
 
 @Component({
   selector: 'app-counter',
@@ -18,11 +19,11 @@ export class CounterComponent implements OnInit {
   }
 
   increment(): void {
-    this.store.dispatch({ type: 'increment' });
+    this.store.dispatch(action.countIncrementd());
   }
 
   decrement(): void {
-    this.store.dispatch({ type: 'decrement' });
+    this.store.dispatch(action.countDecremented());
   }
 
 

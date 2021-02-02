@@ -1,4 +1,5 @@
-import { Action } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
+import * as actions from '../actions/counter.actions';
 
 
 export interface CounterState {
@@ -8,7 +9,11 @@ export interface CounterState {
 const initialState: CounterState = {
   current: 0
 };
-
+const myReducer = createReducer(
+  initialState,
+  on(actions.countIncrementd, (s) => ({ current: s.current + 1 })),
+  on(actions.countDecremented, (s) => ({ current: s.current - 1 }))
+);
 // reducer(currentState, action) => newState
 export function reducer(state: CounterState = initialState, action: Action): CounterState {
   // this must be a pure function
@@ -16,19 +21,7 @@ export function reducer(state: CounterState = initialState, action: Action): Cou
   // you can only produce a new value
   // you cannot do "side effect " here
   // -side effects are things like calling apis, chaning a route, updating other data
-  switch (action.type) {
-    case 'increment':
-      return {
-        current: state.current + 1
-      };
-      break;
-    case 'decrement':
-      return {
-        current: state.current - 1
-      };
-    default:
-      return state;
-  }
 
+  return myReducer(state, action);
 
 }
