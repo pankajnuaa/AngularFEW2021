@@ -11,6 +11,9 @@ import { CounterComponent } from './components/counter/counter.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { CountbyComponent } from './components/countby/countby.component';
+import { EffectsModule } from '@ngrx/effects';
+import { CounterEffects } from './effects/counter.effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +21,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     NavComponent,
     DashboardComponent,
     CounterComponent,
+    CountbyComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +29,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     CommunicationsModule,
     StoreModule.forRoot(reducers),
     // this is needed for redex devtool
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([CounterEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
