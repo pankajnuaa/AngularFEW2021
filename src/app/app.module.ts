@@ -24,6 +24,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     AppRoutingModule,
     CommunicationsModule,
     StoreModule.forRoot(reducers),
+    // this is needed for redex devtool
     StoreDevtoolsModule.instrument()
   ],
   providers: [],
