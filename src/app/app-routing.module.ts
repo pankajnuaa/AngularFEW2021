@@ -1,5 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CounterComponent } from './components/counter/counter.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CommunicationsComponent } from './features/communications/communications.component';
 
@@ -13,9 +14,14 @@ const routes: Routes = [
     component: CommunicationsComponent
 
   },
+  {
+    path: 'counter',
+    component: CounterComponent
+
+  },
 
   {
-    path: "***",
+    path: '***',
     redirectTo: 'dashboard'
   }
 ];
